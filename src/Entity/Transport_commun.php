@@ -7,10 +7,13 @@ use Doctrine\ORM\Mapping as ORM;
 *  @ORM\InheritanceType("JOINED")
 *  @ORM\DiscriminatorColumn(name="id_comp_t", type="integer")
 */
-class Societe_location extends Compagnie_transport
+class Transport_commun extends Compagnie_transport
 {
   
     
 }
+
+
+
 
 ?>

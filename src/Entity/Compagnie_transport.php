@@ -7,13 +7,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Compagnie_transport
 {
    /**
-    * @ORM\id_comp_t
+    * @ORM\Id
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
     protected $id_comp_t;
      /**
-    * @ORM\nom_comp_t
+    * 
     * @ORM\Column(type="string")
     */
     private $nom_comp_t;

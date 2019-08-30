@@ -7,13 +7,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Chauffeur
 {
    /**
-    * @ORM\id_chauf
+    * @ORM\Id
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
     private $id_chauf;
      /**
-    * @ORM\nom_chauf
     * @ORM\Column(type="string")
     */
     private $nom_chauf;

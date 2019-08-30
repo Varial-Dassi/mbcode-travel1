@@ -22,7 +22,7 @@ $dbParams = [
     'charset'  => 'utf8',
     'user'     => 'root',
     'password' => '',
-    'dbname'   => 'mbcode_tp_12',
+    'dbname'   => 'mbcode-travel1',
 ];
 
 $config = Setup::createAnnotationMetadataConfiguration(

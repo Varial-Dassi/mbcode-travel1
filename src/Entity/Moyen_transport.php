@@ -4,73 +4,63 @@ use Doctrine\ORM\Mapping as ORM;
 /**
 *  @ORM\Entity 
 */
-class Moyen_transport{
+class Moyen_transport
+{
    /**
-    * @ORM\id_moy_t
+    * @ORM\Id
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
     protected $id_moy_t;
      /**
-    * @ORM\type_moy_t
     * @ORM\Column(type="string")
     */
-    protected $type_moy_t;
+    protected $type_transport;
      /**
-    * @ORM\capacite_moy_t
     * @ORM\Column(type="string")
     */
-    protected $capacite_moy_t;
-     /**
-    * @ORM\categorie_moy_t
-    * @ORM\Column(type="string")
-    */
-    protected $categorie_moy_t;
+    protected $capacite_transport;
     /**
-    * @ORM\compagnie_moy_t
-    * @ORM\Column(type="string")
+    * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="id")
     */
-    protected $compagnie_moy_t;
-    /**
-    * @ORM\tel_moy_t
-    * @ORM\Column(type="string")
+    protected $id_categorie;
+   /**
+    * @ORM\ManyToOne(targetEntity=Compagnie_transport::class, inversedBy="id")
     */
-    protected $tel_moy_t;
+    protected $id_comp_t;
      
     public function getId_moy_t(){
       return $this->id_moy_t;
     }
-    public function getNom_moy_t(){
-    return $this->nom_moy_t;
+    public function getType_transport(){
+    return $this->type_transport;
     }
-    public function getPrenom_moy_t(){
-      return $this->prenom_moy_t;
+    public function getCapacite_transport(){
+      return $this->capacite_transport;
     }
-    public function getEmail_moy_t(){
-      return $this->email_moy_t;
+    public function getId_categorie(){
+      return $this->id_categorie;
     }
-    public function getTel_moy_t(){
-      return $this->tel_moy_t;
+    public function getId_comp_t(){
+      return $this->id_comp_t;
     }
-
-
+    
     public function setId_moy_t($id_moy_t){
       $this->id_moy_t = $id_moy_t;
     }
-    public function setNom_moy_t($nom_moy_t){
-      $this->nom_moy_t = $nom_moy_t;
+    public function setType_transport($type_transport){
+        $this->type_transport = $type_transport;
     }
-    public function setPrenom_moy_t($prenom_moy_t){
-      $this->prenom_moy_t = $prenom_moy_t;
+    public function setCapacite_transport($capacite_transport){
+        $this->capacite_transport = $capacite_transport;
     }
-    public function setEmail_moy_t($email_moy_t){
-      $this->email_moy_t = $email_moy_t;
+    public function setId_categorie($id_categorie){
+        $this->id_categorie = $id_categorie;
     }
-    public function setTel_moy_t($tel_moy_t){
-      $this->tel_moy_t = $tel_moy_t;
+    public function setId_comp_t($id_comp_t){
+        $this->id_comp_t = $id_comp_t;
     }
-
 
   }
 
-
+?>

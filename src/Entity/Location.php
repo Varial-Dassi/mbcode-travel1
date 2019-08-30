@@ -7,28 +7,28 @@ use Doctrine\ORM\Mapping as ORM;
 class Location
 {
     /**
-    * @ORM\id_location
+    * @ORM\Id
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
     private $id_location;
     /**
-    * @ORM\date_location
+    * 
     * @ORM\Column(type="datetime")
     */
     private $date_location;
     /**
-    * @ORM\duree_location
+    * 
     * @ORM\Column(type="string")
     */
     private $duree_location;
     /**
-    * @ORM\nb_location
+    * 
     * @ORM\Column(type="integer")
     */
     private $nb_location;
     /**
-    * @ORM\codeFactureL
+    * 
     * @ORM\Column(type="string")
     */
     private $codeFactureL;

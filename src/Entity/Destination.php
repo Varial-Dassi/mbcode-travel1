@@ -7,18 +7,18 @@ use Doctrine\ORM\Mapping as ORM;
 class Destination
 {
    /**
-    * @ORM\id_dest
+    * @ORM\Id
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
     protected $id_dest;
      /**
-    * @ORM\pays_dest
+    * 
     * @ORM\Column(type="string")
     */
     private $pays_dest;
      /**
-    * @ORM\ville_dest
+    * 
     * @ORM\Column(type="string")
     */
     private $ville_dest;

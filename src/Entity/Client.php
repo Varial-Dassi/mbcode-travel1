@@ -6,33 +6,33 @@ use Doctrine\ORM\Mapping as ORM;
 */
 class Client{
     /**
-    * @ORM\id_client
+    * @ORM\Id
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
     private $id_client;
      /**
-    * @ORM\nom_client
+    * 
     * @ORM\Column(type="string")
     */
     private $nom_client;
      /**
-    * @ORM\prenom_client
+    * 
     * @ORM\Column(type="string")
     */
     private $prenom_client;
      /**
-    * @ORM\email_client
+    * 
     * @ORM\Column(type="string")
     */
     private $email_client;
      /**
-    * @ORM\telephone_client
+    * 
     * @ORM\Column(type="string")
     */
     private $telephone_client;
      /**
-    * @ORM\nationalite_client
+    * 
     * @ORM\Column(type="string")
     */
     private $nationalite_client;

@@ -7,28 +7,28 @@ use Doctrine\ORM\Mapping as ORM;
 class Reservation
 {
     /**
-    * @ORM\id_reservation
+    * @ORM\Id
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
     private $id_reservation;
     /**
-    * @ORM\date_reservation
+    * 
     * @ORM\Column(type="datetime")
     */
     private $date_reservation;
     /**
-    * @ORM\duree_reservation
+    * 
     * @ORM\Column(type="string")
     */
     private $duree_reservation;
     /**
-    * @ORM\nb_reservation
+    * 
     * @ORM\Column(type="integer")
     */
     private $nb_reservation;
     /**
-    * @ORM\codeFactureR
+    * 
     * @ORM\Column(type="string")
     */
     private $codeFactureR;

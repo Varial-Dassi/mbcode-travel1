@@ -7,13 +7,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Tarif
 {
     /**
-    * @ORM\id_tarif
+    * @ORM\Id
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
     private $id_tarif;
     /**
-    * @ORM\prix_tarif
+    * 
     * @ORM\Column(type="integer")
     */
     private $prix_tarif;
