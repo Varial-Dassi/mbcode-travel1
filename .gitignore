@@ -1,0 +1,6 @@
+vendor/
+composer.json
+composer.lock
+bootstrap.php
+cli-config.php
+config.php
