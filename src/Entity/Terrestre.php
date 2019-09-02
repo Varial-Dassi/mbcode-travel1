@@ -11,7 +11,7 @@ class Terrestre
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
-    protected $id_ter;
+    protected $id;
      /**
     * @ORM\Column(type="string")
     */
@@ -21,7 +21,7 @@ class Terrestre
     */
     protected $capacite;
     /**
-    * @ORM\ManyToOne(targetEntity=Moyen_transport::class)
+    * @ORM\ManyToOne(targetEntity=Moyen_transport::class, inversedBy="id")
     */
     protected $id_moy_t;
    

@@ -6,7 +6,15 @@ use Doctrine\ORM\Mapping as ORM;
 */
 class Conduit
 {
-  /**
+
+   /**
+    * @ORM\Id
+    * @ORM\GeneratedValue
+    * @ORM\Column(type="integer")
+    */
+    protected $id;
+
+    /**
     * @ORM\ManyToOne(targetEntity=Chauffeur::class)
     */
     protected $id_chauf;
@@ -15,7 +23,9 @@ class Conduit
     */
     protected $id_veh;
     
-
+    public function getId(){
+      return $thid->id;
+    }
     public function getId_chauf()
     {
       return $this->id_chauf;

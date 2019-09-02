@@ -1,0 +1,76 @@
+div.author {
+	background-color:rgba(200, 200, 200, 0.8);
+	width: 90%;
+	border: 1px grey solid;
+}
+
+div.author > img {
+	margin-right:10px;
+	border-right: 1px grey solid;
+	height: 117px;
+}
+
+h4.title {
+	font-size: 1.7em;
+}
+h5.title {
+	font-size: 1.5em;
+}
+h6.title {
+	font-size: 1.3em;
+}
+
+#courseMetas > * {
+	vertical-align: middle;
+}
+
+#courseHeader h1 {
+	height: 42px;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#courseMetas > span+span::before {
+	content: '•';
+	margin: 0 10px 0 5px;
+}
+
+#ctl00_ctl01_lblContent #courseDocZero #courseHeader > #courseMetas > span {
+	padding: 0;
+}
+
+.stars {
+	font-size: 1.5em;
+	cursor: pointer;
+	color: #EFC900;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+
+	display: inline-block;
+	height: 0.5em;
+}
+
+.stars span {
+	margin: -12.5% -5px 0;
+}
+
+.stars.locked {
+	pointer-events: none;
+	-webkit-filter: grayscale(1);
+	filter: grayscale(1);
+}
+
+#author-infos {
+	margin-right: 5%;
+	width: 50%;
+}
+
+#cartouche {
+	float: right;
+	padding-left: 30px;
+}

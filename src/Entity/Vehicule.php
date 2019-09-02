@@ -11,7 +11,8 @@ class Vehicule
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
-    protected $id_veh;
+    protected $id;
+    
      /**
     * @ORM\Column(type="string")
     */
@@ -26,59 +27,50 @@ class Vehicule
     protected $capacite;
     
    /**
-    * @ORM\ManyToOne(targetEntity=Categorie::class)
+    * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="id")
     */
     protected $id_cat;
+
+    /**
+    * 
+    * @ORM\ManyToMany(targetEntity=Chauffeur::class, mappedBy="id")
+    */
      
-    public function getId_veh()
-    {
+    public function getId_vehicule(){
       return $this->id_veh;
     }
-
-    public function setId_veh($id_veh)
-  {
-      $this->id_veh = $id_veh;
-  }
-
-    public function getImmatriculation()
-  {
+    public function getImmatriculation(){
     return $this->immatriculation;
-  }
+    }
+    public function getType(){
+      return $this->type;
+    }
+    public function getCapacite(){
+      return $this->capacite;
+    }    
+    public function getId_cat(){
+      return $this->id_cat;
+    }
 
-  public function setImmatriculation($immatriculation)
-  {
-      $this->immatriculation = $immatriculation;
-  }
-  
-  public function getType()
-  {
-    return $this->type;
-  }
 
-  public function setType($type)
-  {
-      $this->type = $type;
-  }
-  
-  public function getCapacite()
-  {
-    return $this->capacite;
-  }
-
-  public function setCapacite($capacite)
-  {
+    public function setId_vehicule($id_vehicule){
+      $this->id_vehicule = $id_vehicule;
+    }
+    public function setImmatriculation($immatriculation){
+        $this->immatriculation = $immatriculation;
+    }
+    public function setType($type){
+        $this->type = $type;
+    }
+    public function setCapacite($capacite){
       $this->capacite = $capacite;
-  }
-
-  public function getId_cat()
-  {
-    return $this->id_cat;
-  }
-
-  public function setId_cat($id_cat)
-  {
+    }
+    public function setId_cat($id_cat){
       $this->id_cat = $id_cat;
-  }
+    }
+
+
+    
 
   }
 

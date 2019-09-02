@@ -1,0 +1,728 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0081)https://www.supinfo.com/articles/single/2341-interaction-une-base-donnees-symfony -->
+<html lang="FR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<link href="./afficharge des base de donnee facile_files/site.css" type="text/css" rel="stylesheet">
+<link href="./afficharge des base de donnee facile_files/site_menumap.css" type="text/css" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://www.supinfo.com/favicon.png">
+
+<meta name="ROBOTS" content="INDEX,FOLLOW ALL">
+<meta name="resource-type" content="document">
+<meta name="viewport" content="width=device-width">
+<meta name="google-site-verification" content="9IYGwcea8yL5I4j-p49VY0YHrRox0mf0_ZQC97YFfgY">
+<meta name="msvalidate.01" content="FD9D49466E075099E68E374696D57591">
+<link rel="stylesheet" href="./afficharge des base de donnee facile_files/jquery-ui-1.8.21.custom.css" type="text/css" media="all">
+<title>Interaction d’une base de données sous Symfony | SUPINFO, École Supérieure d'Informatique</title>
+<meta name="identifier-url" content="https://www.supinfo.com">
+<meta http-equiv="content-language" content="FR">
+<meta name="author" content="SUPINFO - Ecole Informatique - Formation en Informatique - Paris, Lyon, Strasbourg, Bordeaux, Toulouse, Nantes, Nice, Montpellier, Marseille, Grenoble, Macon, Lille, Valenciennes, Caen, Rennes, Tours, Orléans, Troyes, Reims, Metz, Clermont-Ferrand,...">
+<meta name="copyright" content="supinfo.com">
+<meta name="keywords" content="ecole informatique">
+<link rel="stylesheet" href="https://scr.sad.supinfo.com/css/articles.css" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="./afficharge des base de donnee facile_files/docbook.css">
+<link rel="stylesheet" href="./afficharge des base de donnee facile_files/monokai_sublime.css">
+<script src="./afficharge des base de donnee facile_files/jquery-1.7.2.min.js.download" type="text/javascript"></script>
+<script src="./afficharge des base de donnee facile_files/jquery-ui-1.8.21.custom.min.js.download" type="text/javascript"></script>
+<link rel="stylesheet" href="./afficharge des base de donnee facile_files/jquery-ui-1.8.21.custom.css" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="./afficharge des base de donnee facile_files/css-topbar.css"></head>
+<body>
+<form name="frmMain" method="post" action="https://www.supinfo.com/frmMain.aspx?Culture=fr" id="frmMain">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE1MTQ0ODQ4NDIPZBYCAgEPZBYCAgEPZBYCZg9kFgQCBg8PZBYCHgpvbktleVByZXNzBW5pZiAod2luZG93LmV2ZW50LmtleUNvZGUgPT0gMTMpICB7IGRvY3VtZW50LmFsbFsnY3RsMDBfYnRuU2VhcmNoJ10uY2xpY2soKTsgcmV0dXJuIGZhbHNlOyB9IGVsc2UgIHJldHVybiB0cnVlO2QCCg9kFgJmD2QWAgIBDxYCHglpbm5lcmh0bWwFvyA8Q0VOVEVSPg0KPFRBQkxFIHN0eWxlPSJQQURESU5HLVRPUDogMjBweCIgY2VsbFNwYWNpbmc9MCBjZWxsUGFkZGluZz0wIHdpZHRoPSIxMDAlIj4NCjxUQk9EWT4NCjxUUj4NCjxURCBhbGlnbj1jZW50ZXI+PEZPTlQgY29sb3I9YmxhY2s+PElNRyBib3JkZXI9MCBzcmM9Imh0dHA6Ly93d3cuc3VwaW5mby5jb20vaW1hZ2VzL3BhcnRuZXJzL0Npc2NvTG9nby5qcGciIGFsdD0iTG9nbyBkZSBsYSBzb2NpJmVhY3V0ZTt0JmVhY3V0ZTsgQ2lzY28sIHBhcnRlbmFpcmUgcCZlYWN1dGU7ZGFnb2dpcXVlIGRlIFNVUElORk8sIGxhIEdyYW5kZSAmRWFjdXRlO2NvbGUgZGUgbCdpbmZvcm1hdGlxdWUsIGR1IG51bSZlYWN1dGU7cmlxdWUgZXQgZHUgbWFuYWdlbWVudCI+PC9GT05UPjwvVEQ+DQo8VEQgYWxpZ249Y2VudGVyPjxGT05UIGNvbG9yPWJsYWNrPjxJTUcgYm9yZGVyPTAgc3JjPSJodHRwOi8vd3d3LnN1cGluZm8uY29tL2ltYWdlcy9wYXJ0bmVycy9JYm1Mb2dvLmpwZyIgYWx0PSJMb2dvIGRlIGxhIHNvY2kmZWFjdXRlO3QmZWFjdXRlOyBJQk0sIHBhcnRlbmFpcmUgcCZlYWN1dGU7ZGFnb2dpcXVlIGRlIFNVUElORk8sIGxhIEdyYW5kZSAmRWFjdXRlO2NvbGUgZGUgbCdpbmZvcm1hdGlxdWUsIGR1IG51bSZlYWN1dGU7cmlxdWUgZXQgZHUgbWFuYWdlbWVudCI+PC9GT05UPjwvVEQ+DQo8VEQgYWxpZ249Y2VudGVyPjxGT05UIGNvbG9yPWJsYWNrPjxJTUcgYm9yZGVyPTAgc3JjPSJodHRwOi8vd3d3LnN1cGluZm8uY29tL2ltYWdlcy9wYXJ0bmVycy9PcmFjbGVTdW5Mb2dvLmpwZyIgYWx0PSJMb2dvIGRlIGxhIHNvY2kmZWFjdXRlO3QmZWFjdXRlOyBTdW4tT3JhY2xlLCBwYXJ0ZW5haXJlIHAmZWFjdXRlO2RhZ29naXF1ZSBkZSBTVVBJTkZPLCBsYSBHcmFuZGUgJkVhY3V0ZTtjb2xlIGRlIGwnaW5mb3JtYXRpcXVlLCBkdSBudW0mZWFjdXRlO3JpcXVlIGV0IGR1IG1hbmFnZW1lbnQiPjwvRk9OVD48L1REPg0KPFREIGFsaWduPWNlbnRlcj48Rk9OVCBjb2xvcj1ibGFjaz48SU1HIGJvcmRlcj0wIHNyYz0iaHR0cDovL3d3dy5zdXBpbmZvLmNvbS9pbWFnZXMvcGFydG5lcnMvQXBwbGVMb2dvLmpwZyIgYWx0PSJMb2dvIGRlIGxhIHNvY2kmZWFjdXRlO3QmZWFjdXRlOyBBcHBsZSwgcGFydGVuYWlyZSBwJmVhY3V0ZTtkYWdvZ2lxdWUgZGUgU1VQSU5GTywgbGEgR3JhbmRlICZFYWN1dGU7Y29sZSBkZSBsJ2luZm9ybWF0aXF1ZSwgZHUgbnVtJmVhY3V0ZTtyaXF1ZSBldCBkdSBtYW5hZ2VtZW50Ij48L0ZPTlQ+PC9URD4NCjxURCBhbGlnbj1jZW50ZXI+PEZPTlQgY29sb3I9YmxhY2s+PElNRyBib3JkZXI9MCBzcmM9Imh0dHA6Ly93d3cuc3VwaW5mby5jb20vaW1hZ2VzL3BhcnRuZXJzL1N5YmFzZUxvZ28uanBnIiBhbHQ9IkxvZ28gZGUgbGEgc29jaSZlYWN1dGU7dCZlYWN1dGU7IFN5YmFzZSwgcGFydGVuYWlyZSBwJmVhY3V0ZTtkYWdvZ2lxdWUgZGUgU1VQSU5GTywgbGEgR3JhbmRlICZFYWN1dGU7Y29sZSBkZSBsJ2luZm9ybWF0aXF1ZSwgZHUgbnVtJmVhY3V0ZTtyaXF1ZSBldCBkdSBtYW5hZ2VtZW50Ij48L0ZPTlQ+PC9URD4NCjxURCBhbGlnbj1jZW50ZXI+PEZPTlQgY29sb3I9YmxhY2s+PElNRyBib3JkZXI9MCBzcmM9Imh0dHA6Ly93d3cuc3VwaW5mby5jb20vaW1hZ2VzL3BhcnRuZXJzL05vdmVsbExvZ28uanBnIiBhbHQ9IkxvZ28gZGUgbGEgc29jaSZlYWN1dGU7dCZlYWN1dGU7IE5vdmVsbCwgcGFydGVuYWlyZSBwJmVhY3V0ZTtkYWdvZ2lxdWUgZGUgU1VQSU5GTywgbGEgR3JhbmRlICZFYWN1dGU7Y29sZSBkZSBsJ2luZm9ybWF0aXF1ZSwgZHUgbnVtJmVhY3V0ZTtyaXF1ZSBldCBkdSBtYW5hZ2VtZW50Ij48L0ZPTlQ+PC9URD4NCjxURCBhbGlnbj1jZW50ZXI+PEZPTlQgY29sb3I9YmxhY2s+PElNRyBib3JkZXI9MCBzcmM9Imh0dHA6Ly93d3cuc3VwaW5mby5jb20vaW1hZ2VzL3BhcnRuZXJzL0ludGVsTG9nby5qcGciIGFsdD0iTG9nbyBkZSBsYSBzb2NpJmVhY3V0ZTt0JmVhY3V0ZTsgSW50ZWwsIHBhcnRlbmFpcmUgcCZlYWN1dGU7ZGFnb2dpcXVlIGRlIFNVUElORk8sIGxhIEdyYW5kZSAmRWFjdXRlO2NvbGUgZGUgbCdpbmZvcm1hdGlxdWUsIGR1IG51bSZlYWN1dGU7cmlxdWUgZXQgZHUgbWFuYWdlbWVudCI+PC9GT05UPjwvVEQ+DQo8VEQgYWxpZ249Y2VudGVyPjxGT05UIGNvbG9yPWJsYWNrPjxJTUcgYm9yZGVyPTAgc3JjPSJodHRwOi8vd3d3LnN1cGluZm8uY29tL2ltYWdlcy9wYXJ0bmVycy9hY2NlbnR1cmVMb2dvLmpwZyIgYWx0PSJMb2dvIGRlIGxhIHNvY2kmZWFjdXRlO3QmZWFjdXRlOyBBY2NlbnR1cmUsIHBhcnRlbmFpcmUgcCZlYWN1dGU7ZGFnb2dpcXVlIGRlIFNVUElORk8sIGxhIEdyYW5kZSAmRWFjdXRlO2NvbGUgZGUgbCdpbmZvcm1hdGlxdWUsIGR1IG51bSZlYWN1dGU7cmlxdWUgZXQgZHUgbWFuYWdlbWVudCI+PC9GT05UPjwvVEQ+DQo8VEQgYWxpZ249Y2VudGVyPjxGT05UIGNvbG9yPWJsYWNrPjxJTUcgYm9yZGVyPTAgc3JjPSJodHRwOi8vd3d3LnN1cGluZm8uY29tL2ltYWdlcy9wYXJ0bmVycy9TQVBMb2dvLmpwZyIgYWx0PSJMb2dvIGRlIGxhIHNvY2kmZWFjdXRlO3QmZWFjdXRlOyBTQVAsIHBhcnRlbmFpcmUgcCZlYWN1dGU7ZGFnb2dpcXVlIGRlIFNVUElORk8sIGxhIEdyYW5kZSAmRWFjdXRlO2NvbGUgZGUgbCdpbmZvcm1hdGlxdWUsIGR1IG51bSZlYWN1dGU7cmlxdWUgZXQgZHUgbWFuYWdlbWVudCI+PC9GT05UPjwvVEQ+DQo8VEQgYWxpZ249Y2VudGVyPjxGT05UIGNvbG9yPWJsYWNrPjxJTUcgYm9yZGVyPTAgc3JjPSJodHRwOi8vd3d3LnN1cGluZm8uY29tL2ltYWdlcy9wYXJ0bmVycy9Qcm9tZXRyaWNMb2dvLmpwZyIgYWx0PSJMb2dvIGRlIGxhIHNvY2kmZWFjdXRlO3QmZWFjdXRlOyBQcm9tZXRyaWMsIHBhcnRlbmFpcmUgcCZlYWN1dGU7ZGFnb2dpcXVlIGRlIFNVUElORk8sIGxhIEdyYW5kZSAmRWFjdXRlO2NvbGUgZGUgbCdpbmZvcm1hdGlxdWUsIGR1IG51bSZlYWN1dGU7cmlxdWUgZXQgZHUgbWFuYWdlbWVudCI+PC9GT05UPjwvVEQ+DQo8VEQgYWxpZ249Y2VudGVyPjxGT05UIGNvbG9yPWJsYWNrPjxJTUcgYm9yZGVyPTAgc3JjPSJodHRwOi8vd3d3LnN1cGluZm8uY29tL2ltYWdlcy9wYXJ0bmVycy9Ub2VpY0xvZ28uanBnIiBhbHQ9IkxvZ28gZGUgbGEgc29jaSZlYWN1dGU7dCZlYWN1dGU7IFRvZWljLCBwYXJ0ZW5haXJlIHAmZWFjdXRlO2RhZ29naXF1ZSBkZSBTVVBJTkZPLCBsYSBHcmFuZGUgJkVhY3V0ZTtjb2xlIGRlIGwnaW5mb3JtYXRpcXVlLCBkdSBudW0mZWFjdXRlO3JpcXVlIGV0IGR1IG1hbmFnZW1lbnQiPjwvRk9OVD48L1REPg0KPFREIHdpZHRoPTE5MCBhbGlnbj1jZW50ZXI+PEZPTlQgY29sb3I9YmxhY2s+PElNRyBib3JkZXI9MCBzcmM9Imh0dHA6Ly93d3cuc3VwaW5mby5jb20vaW1hZ2VzL3BhcnRuZXJzL01pY3Jvc29mdElUQUxvZ28uanBnIiBhbHQ9IkxvZ28gZHUgSVQgQWNhZGVteSBQcm9ncmFtIHBhciBNaWNyb3NvZnQsIHBhcnRlbmFpcmUgcCZlYWN1dGU7ZGFnb2dpcXVlIGRlIFNVUElORk8sIGxhIEdyYW5kZSAmRWFjdXRlO2NvbGUgZGUgbCdpbmZvcm1hdGlxdWUsIGR1IG51bSZlYWN1dGU7cmlxdWUgZXQgZHUgbWFuYWdlbWVudCI+PC9GT05UPjwvVEQ+PC9UUj48L1RCT0RZPjwvVEFCTEU+PC9DRU5URVI+DQo8YnIvPg0KPFAgYWxpZ249Y2VudGVyPjxTUEFOPjxGT05UIGNvbG9yPWJsYWNrIHNpemU9MT4NCjxzdHJvbmc+U1VQSU5GTyBJbnRlcm5hdGlvbmFsIFVuaXZlcnNpdHk8L3N0cm9uZz48YnI+DQpFY29sZSBkJ0luZm9ybWF0aXF1ZSAtIElUIFNjaG9vbDxicj4NCiZFYWN1dGU7Y29sZSBTdXAmZWFjdXRlO3JpZXVyZSBkJ0luZm9ybWF0aXF1ZSBkZSBQYXJpcywgbGVhZGVyIGVuIEZyYW5jZTxicj4NCkxhIEdyYW5kZSBFY29sZSBkZSBsJ2luZm9ybWF0aXF1ZSwgZHUgbnVtJmVhY3V0ZTtyaXF1ZSBldCBkdSBtYW5hZ2VtZW50PGJyPg0KRm9uZCZlYWN1dGU7ZSBlbiAxOTY1LCByZWNvbm51ZSBwYXIgbCcmRWFjdXRlO3RhdC4gVGl0cmUgQmFjKzUgY2VydGlmaSZlYWN1dGU7IGF1IG5pdmVhdSBJLjxicj4NClNVUElORk8gSW50ZXJuYXRpb25hbCBVbml2ZXJzaXR5IGlzIGdsb2JhbGx5IG9wZXJhdGVkIGJ5IEVEVUNJTlZFU1QgQmVsZ2l1bSAtIFJ1ZSBEdWNhbGUsIDI5IC0gMTAwMCBCcnVzc2VsczwvRk9OVD48L1A+ZGSiSFAgKLJPb1mzZZvNwhCsDBjzLg==">
+</div>
+<script type="text/javascript">
+            //<![CDATA[
+                var theForm = document.forms['frmMain'];
+                if (!theForm) {
+                    theForm = document.frmMain;
+                }
+                function __doPostBack(eventTarget, eventArgument) {
+                    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                        theForm.__EVENTTARGET.value = eventTarget;
+                        theForm.__EVENTARGUMENT.value = eventArgument;
+                        theForm.submit();
+                    }
+                }
+            //]]>
+        </script>
+<script src="./afficharge des base de donnee facile_files/js-topbar.js.download"></script>
+<div align="center">
+<table cellspacing="0" cellpadding="0" width="962" border="0">
+<tbody><tr>
+<td colspan="3">
+<table class="header_top" cellspacing="0" cellpadding="0" width="962" border="0">
+<tbody><tr>
+<td rowspan="2" class="topHeader" width="220px">
+<a id="ctl00_lnkWebSiteRoot" href="https://www.supinfo.com/fr/Default.aspx">
+<img src="./afficharge des base de donnee facile_files/SupInfoLogo.png" id="ctl00_imgSupinfoLogo" title="Ecole informatique SUPINFO" alt="Ecole informatique - SUPINFO" border="0">
+</a>
+</td>
+<td rowspan="2" class="topHeader" width="512px" align="center" valign="middle">
+</td>
+<td class="topFlags" align="center" width="230px">
+<table border="0">
+<tbody><tr>
+<td><a id="ctl00_lnkMenuMap" title="Plan du site" class="topMenuMap" href="https://www.supinfo.com/fr/Map.aspx">Plan du site</a>
+<span id="ctl00_spnFlags" class="topFlagSeparator"> &nbsp;</span>
+</td>
+<td></td>
+</tr>
+</tbody></table>
+<div id="lien-rapide-oc" style="position: absolute;top: 0px; right: -92px;"><a href="http://www.campus-booster.net/" target="_blank">
+Accéder à Open-Campus </a></div>
+</td>
+</tr>
+<tr>
+<td class="topHeader" height="57" align="left" width="190px">
+<img src="./afficharge des base de donnee facile_files/logo-top-sos@x2.png" class="logo-sos" style="margin-top: 13px;">
+</td>
+</tr>
+<tr>
+<td colspan="3" height="8px;" style="background:url(&#39;https://www.supinfo.com/Images/Common/Trame_up.png&#39;) repeat-x 0px 0px;">
+<img src="./afficharge des base de donnee facile_files/Pixel.gif" border="0" alt="pixel">
+</td>
+</tr>
+</tbody></table>
+<table cellspacing="0" cellpadding="0" width="962" border="0">
+<tbody><tr>
+<td class="topMenuLeft">
+<span id="ctl00_lblTopMenu">
+<ul>
+<li>
+<a class="linka" href="https://www.supinfo.com/fr/Default.aspx">Accueil</a>
+</li>
+<li>
+<a class="linka" href="https://www.supinfo.com/Cursus/">Cursus</a>
+</li>
+<li>
+<a class="linka" href="https://www.supinfo.com/cours/">Cours</a>
+</li>
+<li>
+<a class="linka" href="https://www.supinfo.com/Admission/">Admissions</a>
+</li>
+<li onmouseover="showcampus();" onmouseout="hidecampus()">
+<a class="linka" href="https://www.supinfo.com/campus/">Campus</a>
+</li>
+<li>
+<a class="linka" href="https://www.supinfo.com/brochure/">Documentation</a>
+</li>
+<li>
+<a class="linka" href="https://www.supinfo.com/anciens/">Anciens</a>
+</li>
+<li>
+<a class="linka" href="https://www.supinfo.com/entreprise/">Entreprises</a>
+</li>
+<li>
+<a class="linka" href="https://libraries.supinfo.com/">Librairies</a>
+</li>
+<li>
+<a class="linka" href="https://www.supinfo.com/articles">Publications</a>
+</li>
+</ul>
+</span>
+</td>
+<td class="topMenuRight" align="right">
+<input name="ctl00$txtSearch" type="text" id="ctl00_txtSearch" class="Search" onkeypress="if (window.event.keyCode == 13)  { document.all[&#39;ctl00_btnSearch&#39;].click(); return false; } else  return true;">
+<a onclick="window.location=&#39;https://supinfo.com/fr/Search.aspx?&#39; + document.querySelector(&#39;#ctl00_txtSearch&#39;).value;" id="ctl00_btnSearch" class="SearchButton"></a>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="topLineSeparator">
+<img src="./afficharge des base de donnee facile_files/Pixel.gif" border="0" alt="pixel">
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td width="962" bgcolor="white" style="border-bottom: none 0px White;">
+<table border="0" cellspacing="0" cellpadding="0" width="962" class="tableNews page-base">
+ <tbody><tr>
+<td valign="top" width="100%">
+<table id="ctl00_ctl01_tblPageContent" border="0" cellspacing="0" cellpadding="0" width="100%">
+<tbody><tr>
+<td id="ctl00_ctl01_tdNewsTitle" class="tdNews-MOOC" valign="bottom" style="background:url(&#39;https://www.supinfo.com/SupinfoCommonResources/SUPINFO-MOOCS/titles/2WEB.jpg&#39;) no-repeat 0px 0px" height="125px">
+<h1 style="font-weight:bold; font-size: 16px; font-family:Verdana; color: Black; text-align: right; margin-top:10px; margin-right:10px;">
+<span id="ctl00_ctl01_lblPageTitle">Articles - Étudiants SUPINFO</span>
+</h1>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px; padding-right: 15px;" valign="top">
+<div>
+<span id="ctl00_ctl01_lblIntroduction"></span>
+</div>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px; padding-right: 5px; padding-bottom: 20px;" valign="top">
+<span id="ctl00_ctl01_lblContent">
+<style type="text/css">
+                                                        @import "https://www.supinfo.com/SupinfoCommonResources/SUPINFO-CSS/css-base.css";
+                                                        @import "https://www.supinfo.com/SupinfoCommonResources/SUPINFO-CSS/css-doc0-2015.css";
+                                                    </style>
+<div style="background-image:url(&#39;https://www.supinfo.com/SupinfoCommonResources/SUPINFO-PICTURES/moocs/covers/cover-8.jpg&#39;); height:150px; background-size: cover; border-radius:0px 0px 4px 4px;">
+</div>
+<div class="page-base" id="courseDocZero">
+<div id="courseHeader">
+<h1>Interaction d’une base de données sous Symfony</h1>
+<div id="courseMetas">
+<span>Par
+<a href="https://www.supinfo.com/articles/author/205806-ophelie-fournier">
+Ophélie FOURNIER </a>
+</span>
+<span>Publié le 30/09/2016 à 10:21:24</span>
+<span>Noter cet article:</span>
+<div class="stars locked"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div> (<span class="cntVotes">0</span> votes)
+<br><div class="not-published"><em>Avis favorable du comité de lecture</em></div>
+</div>
+<div class="clr"></div>
+</div>
+<div class="space"></div>
+<div class="courseArea" id="header">
+<div class="course-md-6" id="author-infos">
+<span class="macaron"><object data="./afficharge des base de donnee facile_files/205806.jpg"><img src="https://scr.sad.supinfo.com/img/macaron-anonyme.png"></object></span><h1>Ophélie FOURNIER</h1>
+<p></p>
+<p></p>
+</div>
+<nav class="course-md-4" id="cartouche"><ul class="nav campus-nav" id="cartouche-cours">
+<div id="cartouche-tete" style="text-align: center; padding: 0px 0px;"><img src="./afficharge des base de donnee facile_files/icone-page-financement@x2.png" width="375px"></div>
+<li><span class="section"><a href="https://www.supinfo.com/articles/single/2341-interaction-une-base-donnees-symfony#idm46133035767504">Création de la base de données</a></span></li>
+<li><span class="section"><a href="https://www.supinfo.com/articles/single/2341-interaction-une-base-donnees-symfony#idm46133035759232">Création d'une entité</a></span></li>
+<li><span class="section"><a href="https://www.supinfo.com/articles/single/2341-interaction-une-base-donnees-symfony#idm46133035737632">Comment interpréter la mise à jour de la base de données avec
+Doctrine dans le projet Symfony ?</a></span></li>
+<li><span class="section"><a href="https://www.supinfo.com/articles/single/2341-interaction-une-base-donnees-symfony#idm46133038289936">Les Queries</a></span></li>
+<li><span class="section"><a href="https://www.supinfo.com/articles/single/2341-interaction-une-base-donnees-symfony#idm46133038231856">Translations</a></span></li>
+<li><span class="section"><a href="https://www.supinfo.com/articles/single/2341-interaction-une-base-donnees-symfony#idm46133038157408">Conclusion</a></span></li>
+</ul></nav>
+</div><p>Dans Symfony, afin d'interagir avec une base de données, on utilise un
+ORM, Object-Relating Mapping. L’ORM, par défaut dans Symfony, est Doctrine.
+Doctrine crée des entités qui permettent de manipuler la base de données à
+travers des objets. Ces entités correspondent aux tables de notre base de
+données. Elles sont utilisés dans des contrôleurs pour faire des requêtes
+qui donnent un résultat affiché dans la vue. Cet article fera référence à
+Symfony3. Nous allons tout d’abord découvrir ensemble comment créer une base
+de données avec Doctrine.</p><div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="idm46133035767504"></a>Création de la base de données</h3></div></div></div>
+<p>Nous allons ouvrir la console et se diriger dans le chemin où se
+trouve le projet Symfony. Pour créer la base de données, nous écrirons une
+commande. Mais avant toute chose, il faut indiquer à Doctrine sur quelle
+base de données nous allons créer la database de l’application Symfony.
+Pour cela, nous allons nous diriger dans le fichier
+app/config/parameters.yml et insérer les informations suivantes :</p>
+<div class="mediaobject" align="center"><table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;"><tbody><tr><td align="center" valign="bottom"><img src="https://www.supinfo.com/articles/resources/205806/2341/0.png" align="middle"></td></tr></tbody></table></div>
+<p>Ces informations seront référencées dans le fichier
+app/config/config.yml dans la configuration de doctrine :</p>
+<div class="mediaobject" align="center"><img src="https://www.supinfo.com/articles/resources/205806/2341/1.png" align="middle"></div>
+<p>Lorsqu’on définit une valeur dans « % % », cela signifie qu’elle est
+indiquée dans le fichier parameters.yml qui se trouve dans le répertoire
+app/config. Maintenant qu’on a bien configuré la base de données pour
+Doctrine, pour créer la base de données, nous allons écrire cette commande
+:</p>
+<div class="mediaobject" align="center"><img src="https://www.supinfo.com/articles/resources/205806/2341/2.png" align="middle"></div>
+<p>Notre base de données est donc créé. Bien évidemment, il faut que
+votre projet Symfony comporte des entités afin que la base de données ne
+soit pas vide.</p>
+</div><div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="idm46133035759232"></a>Création d'une entité</h3></div></div></div>
+<p>Pour créer une entité, suivons la procédure suivante : On commence
+par taper la commande :</p>
+<div class="mediaobject" align="center"><img src="https://www.supinfo.com/articles/resources/205806/2341/3.png" align="middle"></div>
+<p>Ensuite, il faut entrer le nom de la nouvelle entité. Il faut
+toujours écrire le nom du bundle où on veut créer l’entité. On sépare le
+nom du bundle et le nom de l’entité par un « : ».</p>
+<div class="mediaobject" align="center"><img src="https://www.supinfo.com/articles/resources/205806/2341/4.png" align="middle" width="503"></div>
+<p>A cette étape, on nous demande quel format on veut utiliser pour le
+mapping de l’entité. Le plus souvent, on utilise le format [annotation].
+Comme il est par défaut (on le sait car il nous l’indique entre crochet),
+on a qu’à taper sur [Enter] du clavier afin de sélectionner ce
+dernier.</p>
+<div class="mediaobject" align="center"><img src="https://www.supinfo.com/articles/resources/205806/2341/5.png" align="middle" width="437"></div>
+<p>Après, on doit indiquer les noms de champs autre que l’id, leur
+type, leur longueur maximale, s’ils peuvent être nuls et s’ils sont
+uniques. Si on a pas d’autres champs à ajouter dans l’entité, on tape sur
+[Enter] du clavier.</p>
+<div class="mediaobject" align="center"><img src="https://www.supinfo.com/articles/resources/205806/2341/6.png" align="middle" width="478"></div>
+<div class="mediaobject" align="center"><img src="https://www.supinfo.com/articles/resources/205806/2341/7.png" align="middle" width="477"></div>
+<p>Et voilà, nous avons notre entité de créer, la voici :</p>
+<div class="mediaobject" align="center"><img src="https://www.supinfo.com/articles/resources/205806/2341/8.png" align="middle" width="405"></div>
+<p>Cette entité n’est pas pour le moment dans la base de données. Pour
+mettre à jour cette dernière, il faut taper cette commande :</p>
+<div class="mediaobject" align="center"><img src="https://www.supinfo.com/articles/resources/205806/2341/9.png" align="middle"></div>
+<p>Par ailleurs, nous pouvons modifier directement la base de données
+via phpMyAdmin, Sequel (pour Mac) ou SQLYog (pour Windows). Nous allons
+voir maintenant comment modifier le projet Symfony avec les mises à jour
+de la base de donnée.</p>
+</div><div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="idm46133035737632"></a>Comment interpréter la mise à jour de la base de données avec
+Doctrine dans le projet Symfony ?</h3></div></div></div>
+<p>Lorsqu’on crée une base de données ou qu’on la met à jour, nous
+devons écrire 3 commandes dans le répertoire de notre projet afin de créer
+ou de mettre à jour les entités de notre projet :</p>
+<div class="mediaobject" align="center"><img src="https://www.supinfo.com/articles/resources/205806/2341/10.png" align="middle"></div>
+<p>Cette commande permet de créer ou de mettre à jour une entité depuis
+une BD existante.</p>
+<div class="mediaobject" align="center"><img src="https://www.supinfo.com/articles/resources/205806/2341/11.png" align="middle"></div>
+<p>Cette commande permet à Doctrine de regarder à l’intérieur d’une
+base de données existante et de créer des informations de mapping.</p>
+<div class="mediaobject" align="center"><img src="https://www.supinfo.com/articles/resources/205806/2341/12.png" align="middle"></div>
+<p>Cette commande permet de mettre à jour les entités (créer getter et
+setter).</p>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="idm46133038303840"></a>Explications des commandes</h4></div></div></div>
+<p><span class="bold"><strong>nomDuBundle</strong></span> est le nom du bundle
+où se trouve l’entité qu’on veut créer ou mettre à jour. Dans ce bundle,
+tu dois avoir le répertoire
+Resources/config/doctrine/metadata/orm.</p>
+<p>&nbsp;</p>
+<p><span class="bold"><strong>nomBDD</strong></span> est le nom inscrit dans la
+configuration de doctrine de notre projet dans le fichier config.yml
+qu’on trouve dans le répertoire app/config :</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/13.png" width="450"></div>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="idm46133038298352"></a>Problèmes lors de la mise à jour des entités</h4></div></div></div>
+<p>Si nous rencontrons des problèmes lors de la régénération des
+entités après avoir exécuté les 3 commandes ci-dessus, il faut vider
+notre cache et relancer PHP :</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p>php bin/console cache:clear = commande sous Symfony3</p></li>
+<li class="listitem"><p>php app/console cache:clear = commande sous Symfony2</p></li>
+</ul></div>
+<p></p>
+<p>Pour relancer PHP, il faut se connecter en tant que root sur notre
+machine de dev :</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p>su</p></li>
+<li class="listitem"><p>service php5-fpm restart</p></li>
+</ul></div>
+<p>&nbsp;</p>
+<p>Dans Symfony, nous utilisons les entités afin d'interagir notre
+application avec la base de données. Allons découvrir comment cela
+s’exécute.</p>
+</div>
+</div><div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="idm46133038289936"></a>Les Queries</h3></div></div></div>
+<p>Pour faire une requête SQL avec Doctrine, il faut déjà renseigner
+sur quelle entité on fait la requête :</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/14.png" width="477"></div>
+<p>Exemple :</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/15.png" width="473"></div>
+<p>Ensuite, il y a plusieurs manières de faire une requête avec
+Doctrine.</p>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="idm46133038283664"></a>find($id)</h4></div></div></div>
+<p>La méthode find($id) récupère tout simplement l'entité
+correspondant à l'id $id.</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/16.png" width="469"></div>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="idm46133038280208"></a>findAll()</h4></div></div></div>
+<p>La méthode findAll() retourne tous les objets d’une entité
+contenue dans la base de données. Le format du retour est un simple
+Array, que vous pouvez parcourir (avec un foreach par exemple) pour
+utiliser les objets qu'il contient.</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/17.png" width="482"></div>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p><span class="bold"><strong>listProduct.html.twig</strong></span> est le
+template.</p></li>
+<li class="listitem"><p><span class="bold"><strong>products</strong></span> est le lien entre le
+contrôleur et la vue, il fait référence à la variable <span class="bold"><strong>$allProducts</strong></span>.</p></li>
+</ul></div>
+<p>&nbsp;</p>
+<p>Dans la vue Twig, comme on a passé la variable $allProducts au
+template dans le contrôleur, voici comment on peut afficher tous nos
+produits :</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/18.png" width="463"></div>
+<p><span class="bold"><strong>content</strong></span> est un champ de l’entité,
+c’est-à-dire un champ de la table <span class="bold"><strong>Products</strong></span> définie plus haut dans l’article.</p>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="idm46133038267056"></a>findOneBy()</h4></div></div></div>
+<p>La méthode findOneBy(array $criteria) permet de retourner une
+entité, en effectuant un filtre pour ne retourner que l’entité
+correspondant à un critère.</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/19.png" width="522"></div>
+<p>Dans cette exemple, on prend en paramètre la route de la page et
+le paramètre de la méthode.</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/20.png" width="498"></div>
+<p>Dans ce cas, on récupère le produit par son slug, c’est-à-dire par
+son url.</p>
+<p>&nbsp;</p>
+<p>Sinon pour faire plus simple, on peut faire comme ceci :</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/21.png" width="550"></div>
+<p>On cherche dans ce cas le produit dont son slug est test.</p>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="idm46133038257008"></a>QueryBuilder</h4></div></div></div>
+<p>QueryBuilder permet de faire des requêtes plus développées comme
+par exemple :</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/22.png" width="594"></div>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p><span class="bold"><strong>c</strong></span> correspond à l’entité
+renseignée par la variable<span class="bold"><strong>
+$repository</strong></span>.</p></li>
+<li class="listitem"><p>Ce qui suit le <span class="bold"><strong>.</strong></span> après
+“<span class="bold"><strong>c</strong></span>” est le nom des champs dans
+l’entité. Attention, le nom doit être écrit exactement comme c’est
+écrit dans l’entité et non dans la base de données !</p></li>
+<li class="listitem"><p>Pour sélectionner un ou plusieurs champ(s) dans l’entité, on
+utilise “<span class="bold"><strong>select</strong></span>”.</p></li>
+<li class="listitem">
+<p>On peut mettre des conditions dans la requête via “<span class="bold"><strong>where</strong></span>” :</p>
+<p>Dans la condition, on renseigne le champ où on veut faire la
+condition ainsi que la valeur dont celui-ci doit prendre. La
+condition se fait via deux lignes :</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; ">
+<li class="listitem"><p><span class="bold"><strong>where('c.slug =
+:slug')</strong></span></p></li>
+<li class="listitem"><p><span class="bold"><strong>setParameter('slug',
+test)</strong></span></p></li>
+</ul></div>
+</li>
+<li class="listitem"><p><span class="bold"><strong>:slug</strong></span> est la valeur que doit
+avoir le champ <span class="emphasis"><em>slug</em></span> contenu dans l’entité
+<span class="bold"><strong>c</strong></span>.</p></li>
+<li class="listitem"><p><span class="bold"><strong>slug</strong></span> qui est dans le
+paramètre (setParameter) correspond à <span class="bold"><strong>:slug</strong></span> et donc doit être écrit identiquement
+sans les “<span class="bold"><strong>:</strong></span>”. <span class="bold"><strong>test</strong></span> est la valeur.</p></li>
+</ul></div>
+<p>Donc dans ce cas, le slug doit être égal à test.</p>
+<p>&nbsp;</p>
+<p>Par ailleurs, nous pouvons avoir besoin de mettre une variable
+dans une traduction si le projet Symfony est destiné à plusieurs pays.
+Découvrons comment fonctionne la traduction sous un projet
+Symfony.</p>
+</div>
+</div><div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="idm46133038231856"></a>Translations</h3></div></div></div>
+<p>Sous un projet Symfony, nous pouvons trouver les traductions dans le
+répertoire app/Resources/translations. Elles sont triées par langue. Dans
+une même langue, nous pouvons avoir autant de fichier de traductions que
+l’on veut :</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/23.png"></div>
+<p>Par ailleurs, nous avons plusieurs façons de traduire notre site
+:</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p>Soit on passe par le contrôleur.</p></li>
+<li class="listitem"><p>Soit on passe par la vue Twig.</p></li>
+</ul></div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="idm46133038225760"></a>Par le contrôleur</h4></div></div></div>
+<p>Dans le controller, nous pouvons créer une variable qui n’est
+autre que le résultat d’une traduction.</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/24.png" width="681"></div>
+<p>Dans notre exemple :</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p><span class="bold"><strong>$translation</strong></span> est la
+variable.</p></li>
+<li class="listitem"><p><span class="bold"><strong>translation</strong></span> est le nom donné
+à la traduction, c’est la source.</p></li>
+<li class="listitem"><p><span class="bold"><strong>common</strong></span> est le nom du fichier
+où la traduction est renseigné</p></li>
+</ul></div>
+<p>&nbsp;</p>
+<p>Afin de l’afficher dans une vue twig, nous avons simplement à
+écrire comme si on voulait afficher une variable toute simple venant
+d’un contrôleur :</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/25.png" width="298"></div>
+<p>Maintenant, nous allons découvrir comment créer une traduction
+directement dans la vue twig.</p>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="idm46133038212864"></a>Par la vue Twig</h4></div></div></div>
+<p>Afin de créer une traduction dans une vue twig, il faut insérer le
+tag “trans” en insérant dedans les paramètres où nous pouvons éditer la
+traduction ainsi que sa source :</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/26.png" width="511"></div>
+<p>Dans notre cas, nous indiquons le fichier de traduction “<span class="bold"><strong>common</strong></span>” ainsi que la source “<span class="bold"><strong>translation</strong></span>”.</p>
+<p>Nous avons plusieurs possibilités de formats de fichiers
+différents pour écrire une traduction : php, xlf (XLIFF) et yml (YAML).
+Dans cet article, nous allons utiliser le format XLIFF qui est le plus
+utilisé.</p>
+<p>Voici comment se présente un fichier XLIFF pour les traductions
+:</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/27.png" width="569"></div>
+<p><span class="bold"><strong>source</strong></span> est le nom de la
+traduction.</p>
+<p><span class="bold"><strong>target</strong></span> est le résultat de la
+traduction, ce qui sera affiché sur la page.</p>
+<p>&nbsp;</p>
+<p>Donc pour le cas ci-dessus où nous avons translation en tant que
+source, voici comment on insère notre traduction :</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/28.png" width="487"></div>
+<p>Si nous voulons insérer des balises dans notre traduction tels que
+&lt;p&gt;, &lt;strong&gt;, nous n’avons qu’à utiliser l’élément CDATA
+comme ci-dessous :</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/29.png" width="541"></div>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="idm46133038196624"></a>Traduction avec des variables</h4></div></div></div>
+<p>Nous pouvons également utiliser des variables provenant du
+contrôleur dans une traduction :</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/30.png" width="930"></div>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p><span class="bold"><strong>product.name</strong></span>correspond au nom
+du produit qu’on trouve dans la base de données. Rappelons nous
+notre exemple avec “<span class="bold"><strong>product.content</strong></span>” plus haut dans l’article.
+C’est le même principe cependant, nous cherchons, dans ce cas, le
+champ <span class="bold"><strong>name</strong></span> de l’entité <span class="bold"><strong>product</strong></span>.</p></li>
+<li class="listitem"><p><span class="bold"><strong>%product_name%</strong></span> est le nom
+qu’on passe dans la traduction, il prend la valeur de “<span class="bold"><strong>product.name</strong></span>”.</p></li>
+</ul></div>
+<p>&nbsp;</p>
+<p>Et voilà comment on insère notre traduction dans le fichier XLIFF
+:</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/31.png" width="569"></div>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="idm46133038183120"></a>Traduction avec la gestion du pluriel, singulier</h4></div></div></div>
+<p>Par ailleurs, nous pouvons gérer la gestion du pluriel/singulier
+en ne mettant en place qu’une traduction et ne pas mettre par exemple
+:</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem"><p>traduction_pluriel = il y a 2 personnes</p></li>
+<li class="listitem"><p>traduction_singulier = il y a 1 personne</p></li>
+</ul></div>
+<p>&nbsp;</p>
+<p>Le tag “<span class="bold"><strong>transchoice</strong></span>” permet de
+filtrer et de gérer le pluriel, singulier d’une même traduction. Par
+exemple, nous pouvons afficher le nombre de personnes ayant compris la
+traduction sous Symfony. Le nombre de personnes sera la condition qui
+permettra de déterminer si notre traduction devra être au pluriel ou au
+singulier.</p>
+<p>Voici comment on le met en place dans la vue Twig :</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/32.png" width="906"></div>
+<p>Nous remarquons que la variable "<span class="bold"><strong>countPersons</strong></span>" qui est mise en condition se place
+directement après le tag “<span class="bold"><strong>transchoice</strong></span>”
+suivi de la déclaration de la variable ainsi que le nom du fichier de
+traduction qui est ici “<span class="bold"><strong>person</strong></span>”.</p>
+<p>&nbsp;</p>
+<p>Dans le fichier de traduction, nous insérons l’élément CDATA afin
+de mettre en place nos conditions :</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/33.png" width="800"></div>
+<p>Si countPersons est égale à 0 (<span class="bold"><strong>{0}</strong></span>), on affiche la première ligne, si elle est
+égale à 1 (<span class="bold"><strong>{1}</strong></span>), on affiche la deuxième
+et si elle est supérieure à 1 (<span class="bold"><strong>]1,+Inf]</strong></span>), nous affichons la 3ème. Il faut
+toujours mettre la condition avant de donner le résultat de la
+traduction.</p>
+<p>&nbsp;</p>
+<p>Le point essentiel que nous n’avons pas encore abordé dans cet
+article est de savoir comment synchroniser ces traductions au sein de
+notre projet Symfony. Pour le moment, elles sont dans notre projet mais
+lorsque nous affichons une page, le résultat des traductions n’est pas
+pris en compte.</p>
+</div>
+<div class="section">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="idm46133038164592"></a>Synchronisation des traductions dans notre projet</h4></div></div></div>
+<p>Afin de synchroniser les traductions dans notre projet, nous
+devons simplement exécuter cette commande :</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/34.png"></div>
+<p><span class="bold"><strong>lang</strong></span> correspond tout simplement à
+la langue des traductions.</p>
+<p>&nbsp;</p>
+<p>Si nous voulons celles de la langue française, nous n’avons qu’à
+taper cette commande :</p>
+<div class="mediaobject"><img src="https://www.supinfo.com/articles/resources/205806/2341/35.png"></div>
+</div>
+</div><div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="idm46133038157408"></a>Conclusion</h3></div></div></div>
+<p>Cet article touche à sa fin. Nous savons maintenant comment
+interagir une base de données sous Symfony ainsi que traduire le projet. A
+vous de jouer !</p>
+</div>
+<div class="clr space"></div>
+</div>
+</span>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td class="tdCopyright" align="left">
+<span id="ctl00_lblCopyright">
+<a href="https://www.supinfo.com/ecole-informatique/" title="A propos de ecole informatique SUPINFO">A propos de SUPINFO</a> |
+<a href="https://www.supinfo.com/fr/contact.aspx">Contacts &amp; adresses</a> |
+<a href="https://www.supinfo.com/enseignant/">Enseigner à SUPINFO</a> |
+<a href="https://www.supinfo.com/presse/">Presse</a> |
+<a href="https://www.supinfo.com/conditions-utilisation-sites-produits-services/">Conditions d'utilisation &amp; Copyright</a> |
+<a href="https://www.supinfo.com/fr/respect_de_la_vie_privee.aspx">Respect de la vie privée</a> |
+<a href="https://www.supinfo.com/fr/investors.aspx">Investir</a>
+</span>
+</td>
+</tr>
+<tr id="ctl00_trPartners">
+<td align="left">
+<span id="ctl00_spnPartner">
+<center>
+<table style="PADDING-TOP: 20px" cellspacing="0" cellpadding="0" width="100%">
+<tbody>
+<tr>
+<td align="center">
+<font color="black">
+<img border="0" src="./afficharge des base de donnee facile_files/CiscoLogo.jpg" alt="Logo de la société Cisco, partenaire pédagogique de SUPINFO, la Grande École de l&#39;informatique, du numérique et du management">
+ </font>
+</td>
+<td align="center">
+<font color="black">
+<img border="0" src="./afficharge des base de donnee facile_files/IbmLogo.jpg" alt="Logo de la société IBM, partenaire pédagogique de SUPINFO, la Grande École de l&#39;informatique, du numérique et du management">
+</font>
+</td>
+<td align="center">
+<font color="black">
+<img border="0" src="./afficharge des base de donnee facile_files/OracleSunLogo.jpg" alt="Logo de la société Sun-Oracle, partenaire pédagogique de SUPINFO, la Grande École de l&#39;informatique, du numérique et du management">
+</font>
+</td>
+<td align="center">
+<font color="black">
+<img border="0" src="./afficharge des base de donnee facile_files/AppleLogo.jpg" alt="Logo de la société Apple, partenaire pédagogique de SUPINFO, la Grande École de l&#39;informatique, du numérique et du management">
+</font>
+</td>
+<td align="center">
+<font color="black">
+<img border="0" src="./afficharge des base de donnee facile_files/SybaseLogo.jpg" alt="Logo de la société Sybase, partenaire pédagogique de SUPINFO, la Grande École de l&#39;informatique, du numérique et du management">
+</font>
+</td>
+<td align="center">
+<font color="black">
+<img border="0" src="./afficharge des base de donnee facile_files/NovellLogo.jpg" alt="Logo de la société Novell, partenaire pédagogique de SUPINFO, la Grande École de l&#39;informatique, du numérique et du management">
+ </font>
+</td>
+<td align="center">
+<font color="black">
+<img border="0" src="./afficharge des base de donnee facile_files/IntelLogo.jpg" alt="Logo de la société Intel, partenaire pédagogique de SUPINFO, la Grande École de l&#39;informatique, du numérique et du management">
+</font>
+</td>
+<td align="center">
+<font color="black">
+<img border="0" src="./afficharge des base de donnee facile_files/accentureLogo.jpg" alt="Logo de la société Accenture, partenaire pédagogique de SUPINFO, la Grande École de l&#39;informatique, du numérique et du management">
+</font>
+</td>
+<td align="center">
+<font color="black">
+<img border="0" src="./afficharge des base de donnee facile_files/SAPLogo.jpg" alt="Logo de la société SAP, partenaire pédagogique de SUPINFO, la Grande École de l&#39;informatique, du numérique et du management">
+</font>
+</td>
+<td align="center">
+<font color="black">
+<img border="0" src="./afficharge des base de donnee facile_files/PrometricLogo.jpg" alt="Logo de la société Prometric, partenaire pédagogique de SUPINFO, la Grande École de l&#39;informatique, du numérique et du management">
+</font>
+</td>
+<td align="center">
+<font color="black">
+<img border="0" src="./afficharge des base de donnee facile_files/ToeicLogo.jpg" alt="Logo de la société Toeic, partenaire pédagogique de SUPINFO, la Grande École de l&#39;informatique, du numérique et du management">
+</font>
+</td>
+<td width="190" align="center">
+<font color="black">
+<img border="0" src="./afficharge des base de donnee facile_files/MicrosoftITALogo.jpg" alt="Logo du IT Academy Program par Microsoft, partenaire pédagogique de SUPINFO, la Grande École de l&#39;informatique, du numérique et du management">
+</font>
+</td>
+</tr>
+</tbody>
+</table>
+</center>
+<br>
+<p align="center">
+<span>
+<font color="black" size="1">
+<strong>SUPINFO International University</strong>
+<br> Ecole d'Informatique - IT School
+<br> École Supérieure d'Informatique de Paris, leader en France
+<br> La Grande Ecole de l'informatique, du numérique et du management
+<br> Fondée en 1965, reconnue par l'État. Titre Bac+5 certifié au niveau I.
+<br> SUPINFO International University is globally operated by EDUCINVEST Belgium - Avenue Louise, 534 - 1050 Brussels</font>
+</span>
+</p>
+</span>
+</td>
+</tr>
+</tbody></table>
+</div>
+</form>
+<script src="./afficharge des base de donnee facile_files/d3.min.js.download"></script>
+<script src="./afficharge des base de donnee facile_files/d3.layout.cloud.js.download"></script>
+<script src="./afficharge des base de donnee facile_files/highlight.min.js.download"></script>
+<script>Array.prototype.slice.apply(document.querySelectorAll('pre.programlisting')).forEach(hljs.highlightBlock);</script>
+<script src="./afficharge des base de donnee facile_files/swfobject-2.2.min.js.download"></script>
+<script type="text/javascript" src="./afficharge des base de donnee facile_files/dtjava.js.download"></script>
+<script src="./afficharge des base de donnee facile_files/evercookie.js.download"></script>
+<script src="./afficharge des base de donnee facile_files/stars.js.download"></script>
+<script>
+		$.ajax({
+			method: "GET",
+			url: "https://scr.sad.supinfo.com/api/supinfo/getArticleRank?articleId=2341",
+			dataType: 'JSON',
+			xhrFields: {
+				withCredentials: true
+			}
+		}).done(function(res) {
+			var s = new stars({
+                        container: document.querySelector('.stars'),
+                        cb: function(note) {
+							$.ajax({
+					            method: "GET",
+					            url: "https://scr.sad.supinfo.com/api/supinfo/rating?articleId=2341&articleRate=" + note,
+					            dataType: 'JSON',
+					            xhrFields: {
+					                withCredentials: true
+					            }
+					        }).done(function(res) {
+								console.log("Vote pris en compte !");
+							});
+                        },
+                        max: 5,
+                        curr: res.rank,
+                        clicksNumber: res.clicks,
+                        articleId: 2341                    });
+		});
+    </script>
+<script src="./afficharge des base de donnee facile_files/words.js.download"></script>
+
+
+<div id="top-menu-bar" style="display: block;"><div id="top-menu-bar-first"><div class="inner"><img src="./afficharge des base de donnee facile_files/SupInfoLogo.png" class="logo"><div class="sos"><img src="./afficharge des base de donnee facile_files/logo-top-top-sos@x2.png"></div><ul><li><a href="https://www.twitter.com/SUPINFO"><img src="./afficharge des base de donnee facile_files/logo-twitter-topbar@x2.png"> <span>@SUPINFO</span></a></li><li><a href="https://www.supinfo.com/contact/"><img src="./afficharge des base de donnee facile_files/icone-contact-topbar@x2.png"><span>Contact</span></a></li></ul></div></div><div id="top-menu-bar-inner"><div id="top-site-nav"><ul><li>
+<a class="linka" href="https://www.supinfo.com/fr/Default.aspx">Accueil</a>
+</li><li>
+<a class="linka" href="https://www.supinfo.com/Cursus/">Cursus</a>
+</li><li>
+<a class="linka" href="https://www.supinfo.com/cours/">Cours</a>
+</li><li>
+<a class="linka" href="https://www.supinfo.com/Admission/">Admissions</a>
+</li><li>
+<a class="linka" href="https://www.supinfo.com/campus/">Campus</a>
+</li><li>
+<a class="linka" href="https://www.supinfo.com/brochure/">Documentation</a>
+</li><li>
+<a class="linka" href="https://www.supinfo.com/anciens/">Anciens</a>
+</li><li>
+<a class="linka" href="https://www.supinfo.com/entreprise/">Entreprises</a>
+</li><li>
+<a class="linka" href="https://libraries.supinfo.com/">Librairies</a>
+</li><li>
+<a class="linka" href="https://www.supinfo.com/articles">Publications</a>
+</li></ul></div><div id="inner-nav"><ul><li>Naviguer sur la page</li><li><span class="section"><a href="https://www.supinfo.com/articles/single/2341-interaction-une-base-donnees-symfony#idm46133035767504">Création de la base de données</a></span></li><li><span class="section"><a href="https://www.supinfo.com/articles/single/2341-interaction-une-base-donnees-symfony#idm46133035759232">Création d'une entité</a></span></li><li><span class="section"><a href="https://www.supinfo.com/articles/single/2341-interaction-une-base-donnees-symfony#idm46133035737632">Comment interpréter la mise à jour de la base de données avec
+Doctrine dans le projet Symfony ?</a></span></li><li><span class="section"><a href="https://www.supinfo.com/articles/single/2341-interaction-une-base-donnees-symfony#idm46133038289936">Les Queries</a></span></li><li><span class="section"><a href="https://www.supinfo.com/articles/single/2341-interaction-une-base-donnees-symfony#idm46133038231856">Translations</a></span></li><li><span class="section"><a href="https://www.supinfo.com/articles/single/2341-interaction-une-base-donnees-symfony#idm46133038157408">Conclusion</a></span></li></ul></div></div></div></body></html>

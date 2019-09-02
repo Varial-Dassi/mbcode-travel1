@@ -6,16 +6,25 @@ use Doctrine\ORM\Mapping as ORM;
 */
 class Correspond
 {
+   /**
+    * @ORM\Id
+    * @ORM\GeneratedValue
+    * @ORM\Column(type="integer")
+    */
+    protected $id;
   /**
-    * @ORM\ManyToOne(targetEntity=Categorie::class)
+    * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="id")
     */
     protected $id_cat;
     /**
-    * @ORM\ManyToOne(targetEntity=Tarif::class)
+    * @ORM\ManyToOne(targetEntity=Tarif::class, inversedBy="id")
     */
     protected $id_tarif;
     
-
+  public function getId()
+  {
+    return $this->id;
+  }
     public function getId_cat()
     {
       return $this->id_cat;

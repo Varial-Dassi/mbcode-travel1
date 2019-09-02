@@ -1,0 +1,77 @@
+$("#flip").click(function() {
+	  $(this).toggleClass('openclass closeclass');
+	  $("#panel").slideToggle("slow");
+});
+
+$(window).on('load',function() {
+	  $("#resume2").hide();
+});
+
+$("#coaching").click(function() {
+	  var prix1 = parseInt($("#prix1").val());
+	  var prix2 = parseInt($("#prix2").val());
+	  var total = prix1 + prix2;
+	
+	  if($(this).is(':checked')){
+		  $("#resume2").show();
+		  total = total - $("#cpvalue").val();
+		  $('#totalpayment div').next().html('<strong>' + total + ' €</strong>');
+		  $('#prix').val(total);
+	  }
+	  else{
+		  $("#resume2").hide();
+		  total = prix1 - $("#cpvalue").val();
+		  $('#totalpayment div').next().html('<strong>' + total + ' €</strong>');
+		  $('#prix').val(total);
+	  }
+});
+
+// CP
+var button = $("#cpbtn");
+button.on("click", function(){
+	var cp = $("#cpbox").val();
+	var url = "https://reconvert.net/checkout/live/getinfos.php";
+	$.getJSON(url, {coupon:cp}, function(data){
+		if(data == 0){
+			$("#cp-error").text("Code inexistant");
+			$("#cpvalue").val(0);
+			
+			var prix1 = parseInt($("#prix1").val());
+			var prix2 = parseInt($("#prix2").val());
+			var total = prix1 + prix2;
+
+			if($("#coaching").is(':checked')){
+			  $("#resume2").show();
+			  total = total - data;
+			  $('#totalpayment div').next().html('<strong>' + total + ' €</strong>');
+			  $('#prix').val(total);
+			}
+			else{
+			  $("#resume2").hide();
+			  total = prix1 - data;
+			  $('#totalpayment div').next().html('<strong>' + total + ' €</strong>');
+			  $('#prix').val(total);
+			}
+		}
+		else{
+			$("#cp-error").text("");
+			$("#cpvalue").val(data);
+			var prix1 = parseInt($("#prix1").val());
+			var prix2 = parseInt($("#prix2").val());
+			var total = prix1 + prix2;
+
+			if($("#coaching").is(':checked')){
+			  $("#resume2").show();
+			  total = total - data;
+			  $('#totalpayment div').next().html('<strong>' + total + ' €</strong>');
+			  $('#prix').val(total);
+			}
+			else{
+			  $("#resume2").hide();
+			  total = prix1 - data;
+			  $('#totalpayment div').next().html('<strong>' + total + ' €</strong>');
+			  $('#prix').val(total);
+			}
+		}
+	});
+});

@@ -11,30 +11,25 @@ class Categorie
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
-    protected $id_cat;
+    protected $id;
      /**
     * @ORM\Column(type="string")
     */
     protected $nom;
-    
 
-    public function getId_cat()
-    {
+
+    
+    public function getId_cat(){
       return $this->id_cat;
     }
-
-    public function setId_cat($id_cat)
-    {
-        $this->id_cat = $id_client;
-    }
-
-    public function getNom()
-  {
+    public function getNom(){
     return $this->nom;
   }
 
-  public function setNom($nom)
-    {
+  public function setId_cat($id_cat){
+    $this->id_cat = $id_cat;
+}
+  public function setNom($nom){
         $this->nom = $nom;
     }
 

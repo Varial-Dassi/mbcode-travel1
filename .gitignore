@@ -4,3 +4,5 @@ composer.lock
 bootstrap.php
 cli-config.php
 config.php
+administration/
+bootstrap/
