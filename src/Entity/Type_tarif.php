@@ -10,14 +10,23 @@ class Type_tarif{
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
+<<<<<<< HEAD
     protected $id;
+=======
+    protected $id_type_tarif;
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
      /**
     * @ORM\Column(type="string")
     */
     protected $designation;
     
 
+<<<<<<< HEAD
     public function getId_type_tarif(){
+=======
+    public function getId_type_tarif()
+    {
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
       return $this->id_type_tarif;
     }
 

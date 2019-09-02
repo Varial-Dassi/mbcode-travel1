@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 use Doctrine\Common\Collections\ArrayCollection;
+=======
+
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
 use Doctrine\ORM\Mapping as ORM; 
 /**
 *  @ORM\Entity 
@@ -11,7 +15,11 @@ class Destination
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
+<<<<<<< HEAD
     protected $id;
+=======
+    protected $id_dest;
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
      /**
     * 
     * @ORM\Column(type="string")

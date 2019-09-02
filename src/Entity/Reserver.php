@@ -6,11 +6,16 @@ use Doctrine\ORM\Mapping as ORM;
 */
 class Reserver
 {
+<<<<<<< HEAD
   /**
+=======
+    /**
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
     * @ORM\Id
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
+<<<<<<< HEAD
     private $id;
     /**
     * @ORM\ManyToOne(targetEntity=Reservation::class)
@@ -38,5 +43,12 @@ class Reserver
       }
    
     
+=======
+    private $id_reserver;
+   
+    #id_reservation (Reserver.php)
+    #id_moy_t (Moyen_transport.php)
+
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
 }
 

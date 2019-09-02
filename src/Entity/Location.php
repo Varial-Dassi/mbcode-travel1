@@ -11,7 +11,11 @@ class Location
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
+<<<<<<< HEAD
     private $id;
+=======
+    private $id_location;
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
     /**
     * 
     * @ORM\Column(type="datetime")
@@ -29,6 +33,7 @@ class Location
     private $nb_location;
     /**
     * 
+<<<<<<< HEAD
     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="id")
     */
     private $id_client;
@@ -44,6 +49,12 @@ class Location
     private $id_vehicule;
 
     
+=======
+    * @ORM\Column(type="string")
+    */
+    private $codeFactureL;
+
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
     public function getId_location(){
         return $this->id_location;
     }
@@ -59,6 +70,7 @@ class Location
     public function getCodeFactureL(){
         return $this->codeFactureL;
     }
+<<<<<<< HEAD
     public function getId_client(){
         return $this->id_client;
     }
@@ -68,6 +80,8 @@ class Location
     public function getId_vehicule(){
         return $this->id_veh;
     }
+=======
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
     
     public function setId_location($id_location){
         $this->id_location = $id_location;
@@ -84,6 +98,7 @@ class Location
     public function setCodeFactureL($codeFactureL){
         $this->codeFactureL = $codeFactureL;
     }
+<<<<<<< HEAD
     public function setId_client($id_client){
         $this->id_client = $id_client;
     }
@@ -93,5 +108,7 @@ class Location
     public function setId_vehicule($id_vehicule){
         $this->id_vehicule = $id_vehicule;
     }
+=======
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
   
 }

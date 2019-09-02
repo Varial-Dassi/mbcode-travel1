@@ -11,7 +11,11 @@ class Compagnie_transport
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
+<<<<<<< HEAD
     protected $id;
+=======
+    protected $id_comp_t;
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
      /**
     * 
     * @ORM\Column(type="string")

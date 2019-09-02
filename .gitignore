@@ -1,8 +1,12 @@
 vendor/
 composer.json
+<<<<<<< HEAD
 composer.lock
 bootstrap.php
 cli-config.php
 config.php
 administration/
 bootstrap/
+=======
+composer.lock
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b

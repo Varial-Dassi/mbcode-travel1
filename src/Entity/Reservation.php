@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 # src/Entity/Reservation.php
+=======
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
 
 use Doctrine\ORM\Mapping as ORM; 
 /**
@@ -12,7 +15,11 @@ class Reservation
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
+<<<<<<< HEAD
     private $id;
+=======
+    private $id_reservation;
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
     /**
     * 
     * @ORM\Column(type="datetime")
@@ -33,6 +40,7 @@ class Reservation
     * @ORM\Column(type="string")
     */
     private $codeFactureR;
+<<<<<<< HEAD
     /** 
      * @ORM\ManyToOne(targetEntity=Client::class)
      */ 
@@ -43,6 +51,8 @@ class Reservation
     private $id_dest;
 
 
+=======
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
 
 
     public function getId_reservation(){
@@ -60,12 +70,15 @@ class Reservation
     public function getCodeFactureR(){
         return $this->codeFactureR;
     }
+<<<<<<< HEAD
     public function getId_dest(){
         return $this->id_dest;
     }
     public function getId_client(){
         return $this->id_client;
     }
+=======
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
 
     public function setId_reservation($id_reservation){
         $this->id_reservation = $id_reservation;
@@ -82,11 +95,14 @@ class Reservation
     public function setCodeFactureR($codeFactureR){
         $this->codeFactureR = $codeFactureR;
     }
+<<<<<<< HEAD
     public function setId_dest($id_dest){
         $this->id_dest = $id_dest;
     }
     public function setId_client($id_client){
         $this->id_client = $id_client;
     }
+=======
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
   
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Doctrine\ORM\Mapping as ORM; 
+<<<<<<< HEAD
 /**
 *  @ORM\Entity 
 */
@@ -69,3 +70,17 @@ class Terrestre
   }
 
 ?>
+=======
+
+/**
+*  @ORM\Entity 
+*  @ORM\InheritanceType("JOINED")
+*  @ORM\DiscriminatorColumn(name="id_moy_t", type="integer")
+*/
+class Terrestre extends Moyen_transport
+{
+  
+    
+}
+
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b

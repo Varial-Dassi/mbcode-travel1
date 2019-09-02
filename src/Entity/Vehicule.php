@@ -12,6 +12,7 @@ class Vehicule
     * @ORM\Column(type="integer")
     */
     protected $id;
+
     
      /**
     * @ORM\Column(type="string")
@@ -30,11 +31,6 @@ class Vehicule
     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="id")
     */
     protected $id_cat;
-
-    /**
-    * 
-    * @ORM\ManyToMany(targetEntity=Chauffeur::class, mappedBy="id")
-    */
      
     public function getId_vehicule(){
       return $this->id_veh;

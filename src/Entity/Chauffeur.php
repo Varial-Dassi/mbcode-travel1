@@ -11,7 +11,11 @@ class Chauffeur
     * @ORM\GeneratedValue
     * @ORM\Column(type="integer")
     */
+<<<<<<< HEAD
     protected $id;
+=======
+    private $id_chauf;
+>>>>>>> e692f6eb786a80e05e5dc82582c29de483f6c14b
      /**
     * @ORM\Column(type="string")
     */
